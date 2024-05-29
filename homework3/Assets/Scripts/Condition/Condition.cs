@@ -29,6 +29,11 @@ public class Condition : MonoBehaviour
         curValue = Mathf.Max(curValue - amount, 0.0f);
     }
 
+    public void Passive()
+    {
+        curValue += passiveValue;
+    }
+
     public float GetPercentage()
     {
         return curValue / maxValue;

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public interface IDamagable
 {
     void TakePhysicalDamage(int damage);
-    void brokenLeg(float hurt);
 }
 
 public class PlayerCondition : MonoBehaviour, IDamagable
@@ -13,12 +12,20 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public UICondition uiCondition;
 
     Condition health { get { return uiCondition.health; } }
+    Condition thirst { get { return uiCondition.thirst; } }
 
     public event Action onTakeDamage;
-    public event Action onFallDamage;
 
     private void Update()
     {
+        health.Subtract(health.passiveValue * Time.deltaTime);
+        thirst.Subtract(thirst.passiveValue * Time.deltaTime);
+
+        if (thirst.curValue < 0)
+        {
+            health.Subtract(health.passiveValue * Time.deltaTime * 2f);
+        }
+
         if (health.curValue == 0.0f)
         {
             Die();
@@ -32,13 +39,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
-        //SceneManager.LoadScene("ReplayScene");
-    }
-
-    public void brokenLeg(float hurt)
-    {
-        health.Subtract(hurt);
-        onFallDamage?.Invoke("OnJump", 0.1f);
+        SceneManager.LoadScene("StartScene");
     }
 
     public void TakePhysicalDamage(int damage)

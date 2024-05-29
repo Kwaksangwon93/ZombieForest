@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    private Vector2 curMovementInput;
     public float jumptForce;
+    private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
 
     [Header("Look")]
@@ -16,10 +16,7 @@ public class PlayerController : MonoBehaviour
     public float maxXLook;
     private float camCurXRot;
     public float lookSensitivity;
-
     private Vector2 mouseDelta;
-
-    [HideInInspector]
     public bool canLook = true;
 
     private Rigidbody rigidbody;
@@ -29,7 +26,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -47,12 +44,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnLookInput(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context)
     {
         mouseDelta = context.ReadValue<Vector2>();
     }
 
-    public void OnMoveInput(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
@@ -64,9 +61,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnJumpInput(InputAction.CallbackContext context)
+    public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && IsGrounded())
         {
             rigidbody.AddForce(Vector2.up * jumptForce, ForceMode.Impulse);
         }
@@ -87,32 +84,33 @@ public class PlayerController : MonoBehaviour
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
         cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
-        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity);
     }
 
-    //bool IsGrounded()
-    //{
-    //    Ray[] rays = new Ray[4]
-    //    {
-    //        new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
-    //        new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
-    //        new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
-    //        new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
-    //    };
-
-    //    for (int i = 0; i < rays.Length; i++)
-    //    {
-    //        if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
-    //        {
-    //            return true;
-    //        }
-    //    }
-
-    //    return false;
-    //}
-
-    public void ToggleCursor(bool toggle)
+    bool IsGrounded()
     {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (transform.up * 0.01f), Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], 1f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
