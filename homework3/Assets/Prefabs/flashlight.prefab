@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8638205229010035520}
   - component: {fileID: 1695309313144239000}
   - component: {fileID: 7912479545939026531}
+  - component: {fileID: 5763913722361900951}
   m_Layer: 8
   m_Name: flashlight
   m_TagString: Untagged
@@ -30,9 +31,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933232488627015920}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70411503, y: -0.06497849, z: -0.03024314, w: 0.70645964}
+  m_LocalRotation: {x: -0.7041155, y: -0.064971715, z: -0.030239433, w: 0.7064599}
   m_LocalPosition: {x: 26, y: 4, z: 69}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -170,3 +171,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.23761036, y: 1.01018, z: 0.23400056}
   m_Center: {x: -0.001101341, y: 0.491251, z: -0.0000009587083}
+--- !u!114 &5763913722361900951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933232488627015920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9638e9d78c6648d4b88071d01e2803d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 5
+  volume: {fileID: 0}
+  bright: 0.05

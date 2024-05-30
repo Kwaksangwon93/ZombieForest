@@ -9,8 +9,6 @@ public class RiverDamage : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log(other.gameObject.name);
-
             CharacterManager.Instance.Player.condition.uiCondition.health.Subtract(riverDamage);
             CharacterManager.Instance.Player.condition.uiCondition.thirst.Add(riverDamage * 15f);
         }

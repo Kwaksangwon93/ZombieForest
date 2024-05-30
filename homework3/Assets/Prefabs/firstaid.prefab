@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9149028665153077431}
   - component: {fileID: 4200637536774511012}
   - component: {fileID: 3468626782479589989}
+  - component: {fileID: 6971758864516055956}
   m_Layer: 8
   m_Name: firstaid
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 28.122, y: 4, z: 68}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -169,3 +170,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8154834, y: 0.3475596, z: 0.62949526}
   m_Center: {x: -0.0068259835, y: 0.1600316, z: 0.0025842488}
+--- !u!114 &6971758864516055956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3216312151473291672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f46dccc44aa584db32bb8059da3825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20

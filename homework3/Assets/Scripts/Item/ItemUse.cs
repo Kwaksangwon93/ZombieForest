@@ -17,6 +17,7 @@ public class ItemUse : MonoBehaviour
 
     public GameObject curUseGameObject;
     private IUseable curUseable;
+    private Item curUseItem;
 
     public TextMeshProUGUI promptText;
     private Camera camera;
@@ -36,12 +37,11 @@ public class ItemUse : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, maxCheckDistance,layerMask))
             {
-                Debug.Log(hit.collider.gameObject.name);
-
                 if (hit.collider.gameObject != curUseGameObject)
                 {
                     curUseGameObject = hit.collider.gameObject;
                     curUseable = hit.collider.GetComponent<IUseable>();
+                    curUseItem = hit.collider.GetComponent<Item>();
                     SetPromptText();
                 }
             }
@@ -65,6 +65,7 @@ public class ItemUse : MonoBehaviour
         if (context.phase == InputActionPhase.Started && curUseable != null)
         {
             curUseable.OnUse();
+            curUseItem.ItemUsed();
             curUseGameObject = null;
             curUseable = null;
             promptText.gameObject.SetActive(false);
