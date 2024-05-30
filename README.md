@@ -32,5 +32,6 @@
 | ![1](https://github.com/Kwaksangwon93/homework3/blob/main/homework3/ReadMe/1.PNG) | ![2](https://github.com/Kwaksangwon93/homework3/blob/main/homework3/ReadMe/2.png) |
 | 상호 작용 | 좀비 출현 |
 | ![3](https://github.com/Kwaksangwon93/homework3/blob/main/homework3/ReadMe/3.png) | ![4](https://github.com/Kwaksangwon93/homework3/blob/main/homework3/ReadMe/4.png) |
-
+<br><br>
+<img src="https://github.com/Kwaksangwon93/homework3/blob/main/homework3/ReadMe/GIF.gif" width="1000" height="600"/>
 
