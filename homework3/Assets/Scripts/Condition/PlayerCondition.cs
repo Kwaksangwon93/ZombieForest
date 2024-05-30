@@ -42,6 +42,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene("StartScene");
     }
 
