@@ -19,7 +19,7 @@ public class ZombieSpawn : MonoBehaviour
     {
         if (currentZombieCount < maxZombies)
         {
-            Vector3 randomPosition = new Vector3(Random.Range(-80, 165), 20, Random.Range(-45, 195));
+            Vector3 randomPosition = new Vector3(Random.Range(-40, 80), 20, Random.Range(-20, 90));
 
             Instantiate(zombiePrefab, randomPosition, Quaternion.identity);
             currentZombieCount++;

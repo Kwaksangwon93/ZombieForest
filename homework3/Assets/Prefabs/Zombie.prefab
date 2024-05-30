@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerGameObject: {fileID: 0}
-  detectionRange: 10
+  detectionRange: 8
   baseSpeed: 2.5
   speedMultiplier: 1.3
 --- !u!114 &4147321560593023984
