@@ -56,7 +56,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         if (collision.gameObject.CompareTag("Zombie"))
         {
-            TakeDamage(1);
+            TakeDamage(10);
             gameObject.GetComponent<Rigidbody>().AddForce(Vector3.back * 50, ForceMode.Impulse);
             gameObject.GetComponent<Rigidbody>().AddForce(Vector2.up * 3, ForceMode.Impulse);
             ZombieFollow zf = collision.gameObject.GetComponent<ZombieFollow>();
